@@ -6,15 +6,17 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/20 11:12:39 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:53:12 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+
+//static variable bleibt vorhanden
 char	*get_next_line(int fd)
 {
-	static char	buff[BUFFER_SIZE + 1];
+	char	buff[BUFFER_SIZE + 1];
 	char		*line;
 	int			i;
 	int			file_size;
