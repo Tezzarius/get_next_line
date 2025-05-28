@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 14:54:22 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 11:32:51 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:42:28 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,31 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
+#define RED		"\x1b[31m"
+#define BLUE	"\x1b[36m"
+#define RESET	"\x1b[0m"
 
 int main(int argc, char **argv)
 {
-	char	*line;
 	int		fd;
-	int		i = 1;
+	char	*line;
 	
-	if (argc == 2)
-		while (i < argc)
-		{
-			fd = open(argv[i], O_RDONLY);
-			if (fd < 0)
-				return -1;
-			while ((line = get_next_line(fd)))
-			{
-				printf("%s", line);
-				free(line);
-			}
-			close(fd);
-			line = get_next_line(fd);
-			free(line);
-			i++;
-		}
-	else
+	if (argc != 2)
 	{
-		fd = 0;
-		line = get_next_line(fd);
-		printf("%s", line);
-		free(line);
-		close(fd);
-		return (0);
+		printf(RED "Error: no file name\n" RESET);
+		return (1);
 	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		printf(RED "Can't open this document\n" RESET);
+		return (1);
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf(BLUE "%s" RESET, line);
+		free(line);
+	}
+	close(fd);
 	return (0);
 }
