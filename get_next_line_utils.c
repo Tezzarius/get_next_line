@@ -6,13 +6,13 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:55:49 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 14:17:45 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:25:23 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	if (!s)
 		return (NULL);
@@ -39,7 +39,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
 	int		i;
@@ -48,10 +48,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return (ft_strdup(s2));
+		return (gnl_strdup(s2));
 	if (!s2)
-		return (ft_strdup(s1));
-	dest = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+		return (gnl_strdup(s1));
+	dest = malloc((gnl_strlen(s1) + gnl_strlen(s2) + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	i = 0;
@@ -67,12 +67,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dest);
 }
 
-char	*ft_strdup(const char *s)
+char	*gnl_strdup(const char *s)
 {
 	int		i;
 	char	*dest;
 
-	dest = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	dest = (char *)malloc((gnl_strlen(s) + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	i = 0;

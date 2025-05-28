@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:33:03 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 10:30:24 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:24:26 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 char	*get_next_line(int fd);
 
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+size_t	gnl_strlen(const char *s);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_strdup(const char *s);
+char	*gnl_strjoin(char const *s1, char const *s2);
 
 #endif

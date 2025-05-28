@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 14:18:35 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:26:08 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*update_store(char *store)
 		free(store);
 		return (NULL);
 	}
-	tmp = malloc(ft_strlen(store + i + 1) + 1);
+	tmp = malloc(gnl_strlen(store + i + 1) + 1);
 	if (!tmp)
 	{
 		free(store);
@@ -73,14 +73,14 @@ static int	fill_store(int fd, char **store)
 
 	size = 1;\
 	if (!*store)
-		*store = ft_strdup("");
-	while (!ft_strchr(*store, '\n') && size > 0)
+		*store = gnl_strdup("");
+	while (!gnl_strchr(*store, '\n') && size > 0)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size < 0)
 			return (-1);
 		buffer[size] = '\0';
-		tmp = ft_strjoin(*store, buffer);
+		tmp = gnl_strjoin(*store, buffer);
 		if (!tmp)
 		{
 			free(*store);
