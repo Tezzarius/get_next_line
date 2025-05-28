@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/27 16:36:07 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 10:29:52 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ static char	*update_store(char *store)
 	size_t	i;
 	size_t	j;
 	char	*tmp;
-	
+
 	i = 0;
 	while (store[i] && store[i] != '\n')
 		i++;
 	if (!store[i])
 	{
 		free(store);
-		return NULL;
+		return (NULL);
 	}
 	tmp = malloc(ft_strlen(store + i + 1) + 1);
 	if (!tmp)
 	{
 		free(store);
-		return NULL;
+		return (NULL);
 	}
 	i++;
 	j = 0;
@@ -38,7 +38,7 @@ static char	*update_store(char *store)
 		tmp[j++] = store[i++];
 	tmp[j] = '\0';
 	free(store);
-	return tmp;
+	return (tmp);
 }
 
 static char	*fill_line(char *store)
@@ -46,13 +46,13 @@ static char	*fill_line(char *store)
 	size_t	i;
 	size_t	j;
 	char	*line;
-	
+
 	i = 0;
 	while (store[i] && store[i] != '\n')
 		i++;
 	line = malloc(i + (store[i] == '\n') + 1);
 	if (!line)
-		return NULL;
+		return (NULL);
 	j = 0;
 	while (j < i)
 	{
@@ -62,7 +62,7 @@ static char	*fill_line(char *store)
 	if (store[i] == '\n')
 		line[j++] = '\n';
 	line[j] = '\0';
-	return line;
+	return (line);
 }
 
 static int	fill_store(int fd, char **store)
@@ -76,19 +76,19 @@ static int	fill_store(int fd, char **store)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size < 0)
-			return -1;
+			return (-1);
 		buffer[size] = '\0';
 		tmp = ft_strjoin(*store, buffer);
 		if (!tmp)
 		{
 			free(*store);
 			*store = NULL;
-			return -1;
+			return (-1);
 		}
 		free(*store);
 		*store = tmp;
 	}
-	return 0;
+	return (0);
 }
 
 char	*get_next_line(int fd)
@@ -101,16 +101,16 @@ char	*get_next_line(int fd)
 	{
 		free(store);
 		store = NULL;
-		return NULL;
+		return (NULL);
 	}
 	check = fill_store(fd, &store);
-	if (check < 0 || !store || *store == '\0')	
+	if (check < 0 || !store || *store == '\0')
 	{
 		free(store);
 		store = NULL;
-		return NULL;
+		return (NULL);
 	}
 	line = fill_line(store);
 	store = update_store(store);
-	return line;
+	return (line);
 }
