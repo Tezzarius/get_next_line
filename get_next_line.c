@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 10:29:52 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:18:35 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ static int	fill_store(int fd, char **store)
 	int		size;
 	char	*tmp;
 
-	size = 1;
+	size = 1;\
+	if (!*store)
+		*store = ft_strdup("");
 	while (!ft_strchr(*store, '\n') && size > 0)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);

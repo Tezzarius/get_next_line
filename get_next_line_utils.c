@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:55:49 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 11:07:00 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:17:45 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
-	if (!c)
+	if (c == '\0')
 		return ((char *)s);
 	return (0);
 }
@@ -51,7 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (!s2)
 		return (ft_strdup(s1));
-	dest = malloc(ft_strlen(s1) + ft_strlen((s2) + 1) * sizeof(char));
+	dest = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	i = 0;
