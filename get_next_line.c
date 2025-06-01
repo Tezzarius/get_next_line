@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/05/28 14:26:08 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/06/01 15:49:39 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	fill_store(int fd, char **store)
 	int		size;
 	char	*tmp;
 
-	size = 1;\
+	size = 1;
 	if (!*store)
 		*store = gnl_strdup("");
 	while (!gnl_strchr(*store, '\n') && size > 0)
