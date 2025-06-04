@@ -6,7 +6,7 @@
 /*   By: bschwarz <bschwarz@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 09:27:27 by bschwarz          #+#    #+#             */
-/*   Updated: 2025/06/01 15:49:39 by bschwarz         ###   ########.fr       */
+/*   Updated: 2025/06/04 17:38:26 by bschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@ static char	*update_store(char *store)
 	while (store[i] && store[i] != '\n')
 		i++;
 	if (!store[i])
-	{
-		free(store);
-		return (NULL);
-	}
+		return (free(store), NULL);
 	tmp = malloc(gnl_strlen(store + i + 1) + 1);
 	if (!tmp)
-	{
-		free(store);
-		return (NULL);
-	}
+		return (free(store), NULL);
 	i++;
 	j = 0;
 	while (store[i])
@@ -113,6 +107,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = fill_line(store);
+	if (!line)
+		return (free(store), NULL);
 	store = update_store(store);
 	return (line);
 }
